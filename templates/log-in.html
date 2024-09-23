@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main>
+<section class="log-in">
+<div class="log-in__image-container">
+    <picture class="log-in__image-container__image">
+        <img src="../static/images/logo-epsi.svg" alt="logo epsi">
+    </picture>
+</div>
+<div class="log-in__form-container">
+    <h1>Se connecter</h1>
+    <form action="" class="form">
+        <div class="form__wrapper">
+            <div class="form__input-container">
+                <label for="email">Votre email</label>
+                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com">
+            </div>                  
+        </div>
+        <div class="form__wrapper">
+            <div class="form__input-container">
+                <label for="password">Votre mot de passe</label>
+                <div class="input">
+                    <input type="password" name="password" id="password" placeholder="*************">
+                    <div role="button" class="form__input-container__icon-container active">
+                        <img class="eye" src="../static/images/eye.svg" alt="icone représentant un oeil">                    
+                    </div>
+                    <div role="button" class="form__input-container__icon-container">
+                        <img class="eye-hidden" src="../static/images/eye-hidden.svg" alt="icone représentant un oeil baré">                    
+                    </div>  
+                </div>                  
+            </div>                  
+        </div>  
+        <div class="form__wrapper">
+            <div class="form__input-container">
+                <button type="submit" name="submit-btn" id="submit-btn">Envoyer</button>
+            </div>                  
+        </div>   
+        <a href="">Pas encore de compte ? Je m'inscris</a>                     
+    </form>
+</div>
+</section>
+</main>
+<script src="../static/js/main.js"></script>
+</body>
+</html>
