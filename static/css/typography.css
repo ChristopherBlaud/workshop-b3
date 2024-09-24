@@ -1,0 +1,18 @@
+h1 {
+    font-size: 42px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--black-color);
+}
+
+a {
+    font-size: 14px;
+    line-height: 1.4;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition) ease-in-out;
+}
+
+a:hover {
+    color: var(--primary-600);
+}

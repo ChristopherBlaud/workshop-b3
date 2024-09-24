@@ -4,9 +4,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tableau de Bord</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
     </head>
     <body>
+        <header>
+
+        </header>
         <main>
             <section class="dashboard">
                 <h1>Bienvenue sur votre tableau de bord, {{ user.firstname }} {{ user.lastname }} !</h1>
