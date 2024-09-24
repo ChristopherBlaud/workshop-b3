@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inscription</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    </head>
+    <body>
+        <main>
+            <section class="sign-up">
+                <div class="sign-up__image-container">
+                    <picture class="sign-up__image-container__image">
+                        <img src="../static/images/logo-epsi.svg" alt="logo epsi" />
+                    </picture>
+                </div>
+                <div class="sign-up__form-container">
+                    <h1>S'inscrire</h1>
+                    <form action="{{ url_for('register') }}" method="POST" class="form">
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="firstname">Ton prénom</label>
+                                <input type="text" name="firstname" id="firstname" placeholder="John" required />
+                            </div>
+                            <div class="form__input-container">
+                                <label for="lastname">Ton nom</label>
+                                <input type="text" name="lastname" id="lastname" placeholder="DOE" required />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="email">Ton email</label>
+                                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" required />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="auth-code">Code d'authentification</label>
+                                <input type="text" name="auth-code" id="auth-code" inputmode="numeric" required />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="password">Ton mot de passe</label>
+                                <div class="input">
+                                    <input type="password" name="password" id="password" placeholder="*************" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <button type="submit" name="submit-btn" id="submit-btn">Envoyer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <script src="../static/js/main.js"></script>
+    </body>
+</html>
