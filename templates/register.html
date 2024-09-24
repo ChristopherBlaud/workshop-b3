@@ -16,7 +16,7 @@
                 </div>
                 <div class="sign-up__form-container">
                     <h1>S'inscrire</h1>
-                    <form action="" class="form">
+                    <form action="{{ url_for('register') }}" method="POST" class="form">
                         <div class="form__wrapper">
                             <div class="form__input-container">
                                 <label for="lastname">Ton prénom</label>
@@ -76,8 +76,15 @@
                             <div class="form__input-container">
                                 <button type="submit" name="submit-btn" id="submit-btn">Envoyer</button>
                             </div>
+                            {% with messages = get_flashed_messages() %} {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %} {% endwith %}
                         </div>
-                        <a href="">Déja inscrit ? Je me connecte</a>
+                        <a href="{{ url_for('login') }}">Déja inscrit ? Je me connecte</a>
                     </form>
                 </div>
             </section>

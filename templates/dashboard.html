@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tableau de Bord</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    </head>
+    <body>
+        <main>
+            <section class="dashboard">
+                <h1>Bienvenue sur votre tableau de bord, {{ user.firstname }} {{ user.lastname }} !</h1>
+                <p>Vous êtes maintenant connecté(e) avec l'email {{ user.email }}.</p>
+                <a href="{{ url_for('logout') }}">Déconnexion</a>
+            </section>
+        </main>
+    </body>
+</html>

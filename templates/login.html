@@ -16,33 +16,27 @@
                 </div>
                 <div class="log-in__form-container">
                     <h1>Se connecter</h1>
-                    <form action="" class="form">
+                    <form method="POST" action="{{ url_for('login') }}" class="form">
                         <div class="form__wrapper">
                             <div class="form__input-container">
                                 <label for="email">Ton email</label>
-                                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" />
+                                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" required />
                             </div>
                         </div>
                         <div class="form__wrapper">
                             <div class="form__input-container">
                                 <label for="password">Ton mot de passe</label>
                                 <div class="input">
-                                    <input type="password" name="password" id="password" placeholder="*************" />
-                                    <div role="button" class="form__input-container__icon-container active">
-                                        <img class="eye" src="../static/images/eye.svg" alt="icone représentant un oeil" />
-                                    </div>
-                                    <div role="button" class="form__input-container__icon-container">
-                                        <img class="eye-hidden" src="../static/images/eye-hidden.svg" alt="icone représentant un oeil baré" />
-                                    </div>
+                                    <input type="password" name="password" id="password" placeholder="*************" required />
                                 </div>
                             </div>
                         </div>
                         <div class="form__wrapper">
                             <div class="form__input-container">
-                                <button type="submit" name="submit-btn" id="submit-btn">Envoyer</button>
+                                <button type="submit" name="submit-btn" id="submit-btn">Se connecter</button>
                             </div>
                         </div>
-                        <a href="">Pas encore de compte ? Je m'inscris</a>
+                        <a href="{{ url_for('register') }}">Pas encore de compte ? Je m'inscris</a>
                     </form>
                 </div>
             </section>
