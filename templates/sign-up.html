@@ -1,67 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inscription</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-<main>
-<section class="sign-up">
-<div class="sign-up__image-container">
-    <picture class="sign-up__image-container__image">
-        <img src="../static/images/logo-epsi.svg" alt="logo epsi">
-    </picture>
-</div>
-<div class="sign-up__form-container">
-    <h1>S'inscrire</h1>
-    <form action="" class="form">
-        <div class="form__wrapper">
-            <div class="form__input-container">
-                <label for="lastname">Votre prénom</label>
-                <input type="text" name="lastname" id="lastname" placeholder="John">
-            </div>
-            <div class="form__input-container">
-                <label for="firstname">Votre nom</label>
-                <input type="text" name="firstname" id="firstname" placeholder="DOE">
-            </div>                    
-        </div>
-        <div class="form__wrapper">
-            <div class="form__input-container">
-                <label for="email">Votre email</label>
-                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com">
-            </div>                  
-        </div>
-        <div class="form__wrapper"></div>
-            <div class="form__input-container">
-                <label for="email">Code d'authentification</label>
-                <input type="number" name="auth-code" id="auth-code">
-            </div>                  
-        </div>        
-        <div class="form__wrapper">
-            <div class="form__input-container">
-                <label for="password">Votre mot de passe</label>
-                <div class="input">
-                    <input type="password" name="password" id="password" placeholder="*************">
-                    <div role="button" class="form__input-container__icon-container active">
-                        <img class="eye" src="../static/images/eye.svg" alt="icone représentant un oeil">                    
-                    </div>
-                    <div role="button" class="form__input-container__icon-container">
-                        <img class="eye-hidden" src="../static/images/eye-hidden.svg" alt="icone représentant un oeil baré">                    
-                    </div>  
-                </div>                  
-            </div>                  
-        </div>  
-        <div class="form__wrapper">
-            <div class="form__input-container">
-                <button type="submit" name="submit-btn" id="submit-btn">Envoyer</button>
-            </div>                  
-        </div>                        
-    </form>
-</div>
-</section>
-</main>
-<script src="../static/js/main.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Inscription</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    </head>
+    <body>
+        <main>
+            <section class="sign-up">
+                <div class="sign-up__image-container">
+                    <picture class="sign-up__image-container__image">
+                        <img src="../static/images/logo-epsi.svg" alt="logo epsi" />
+                    </picture>
+                </div>
+                <div class="sign-up__form-container">
+                    <h1>S'inscrire</h1>
+                    <form action="" class="form">
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="lastname">Ton prénom</label>
+                                <input type="text" name="lastname" id="lastname" placeholder="John" />
+                            </div>
+                            <div class="form__input-container">
+                                <label for="firstname">Ton nom</label>
+                                <input type="text" name="firstname" id="firstname" placeholder="DOE" />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="email">Ton email</label>
+                                <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="email">Code d'authentification</label>
+                                <input type="text" name="auth-code" id="auth-code" inputmode="numeric" />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="password">Ton mot de passe</label>
+                                <div class="input">
+                                    <input type="password" name="password" id="password" placeholder="*************" />
+                                    <div role="button" class="form__input-container__icon-container active">
+                                        <img class="eye" src="../static/images/eye.svg" alt="icone représentant un oeil" />
+                                    </div>
+                                    <div role="button" class="form__input-container__icon-container">
+                                        <img class="eye-hidden" src="../static/images/eye-hidden.svg" alt="icone représentant un oeil baré" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <button type="submit" name="submit-btn" id="submit-btn">Envoyer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <script src="../static/js/main.js"></script>
+    </body>
 </html>

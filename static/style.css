@@ -1,16 +1,27 @@
 :root {
-    --primary-color: #9191FF;
-    --primary-600: #6741EA;
-    --secondary-color: #60BF96;
-    --secondary-600: #1E7D5A;
-    --black-color: #21272A;
-    --white-color: #FFFF;
-    --gray-light: #F2F4F8;
-    --gray-medium: #C1C7CD;
+    --primary-color: #9191ff;
+    --primary-600: #6741ea;
+    --secondary-color: #60bf96;
+    --secondary-600: #1e7d5a;
+    --black-color: #21272a;
+    --white-color: #ffff;
+    --gray-light: #f2f4f8;
+    --gray-medium: #c1c7cd;
     --transition: 250ms;
 }
 
-body, h1, h2, h3, h4, h5, h5, h6, p, span, ul, ol {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+h6,
+p,
+span,
+ul,
+ol {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -44,9 +55,9 @@ a:hover {
     min-height: 100dvh;
 }
 
-.sign-up__image-container, 
+.sign-up__image-container,
 .sign-up__form-container,
-.log-in__image-container, 
+.log-in__image-container,
 .log-in__form-container {
     display: flex;
     justify-content: center;
@@ -71,11 +82,11 @@ a:hover {
 }
 
 .sign-up__image-container__image img,
-.log-in__image-container__image img{
-   width: 100%;
+.log-in__image-container__image img {
+    width: 100%;
 }
 
-.sign-up__form-container .form ,
+.sign-up__form-container .form,
 .log-in__form-container .form {
     display: flex;
     flex-flow: column;
@@ -84,13 +95,11 @@ a:hover {
     gap: 24px;
 }
 
-
 .form__wrapper:first-of-type {
     display: flex;
     flex-flow: row wrap;
     gap: 24px 16px;
 }
-
 
 .form__input-container {
     display: flex;
@@ -99,7 +108,7 @@ a:hover {
     flex: 1 1 auto;
 }
 
-.form__input-container label{
+.form__input-container label {
     font-size: 14px;
     line-height: 1.4;
     color: var(--black-color);
@@ -159,7 +168,7 @@ a:hover {
     .sign-up,
     .log-in {
         flex-flow: column;
-    }    
+    }
 }
 
 @media (max-width: 768px) {
@@ -167,17 +176,17 @@ a:hover {
         font-size: 36px;
     }
 
-    .sign-up__image-container, 
+    .sign-up__image-container,
     .sign-up__form-container,
-    .log-in__image-container, 
+    .log-in__image-container,
     .log-in__form-container {
-        padding: 48px 32px;
+        padding: 48px 24px;
     }
 
     .sign-up__form-container,
     .log-in__form-container {
         justify-content: flex-start;
-    }    
+    }
 
     .sign-up__image-container,
     .log-in__image-container {
@@ -187,5 +196,5 @@ a:hover {
     .sign-up__image-container__image img,
     .log-in__image-container__image img {
         max-width: 300px;
-    }    
+    }
 }

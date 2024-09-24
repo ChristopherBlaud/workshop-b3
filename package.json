@@ -1,0 +1,14 @@
+{
+    "name": "workshop-b3",
+    "version": "1.0.0",
+    "main": "index.js",
+    "devDependencies": {
+        "prettier": "3.3.3"
+    },
+    "scripts": {
+        "prettier": "npx prettier . --write"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": ""
+}
