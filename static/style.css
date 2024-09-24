@@ -103,6 +103,7 @@ a:hover {
 
 .form__input-container {
     display: flex;
+    position: relative;
     flex-flow: column;
     gap: 4px;
     flex: 1 1 auto;
@@ -114,7 +115,8 @@ a:hover {
     color: var(--black-color);
 }
 
-.form__input-container input {
+.form__input-container input,
+.form__input-container select {
     flex: 1 1 auto;
     background-color: var(--gray-light);
     padding: 12px 16px;
@@ -123,7 +125,20 @@ a:hover {
     border-radius: 15px;
 }
 
-.form__input-container input:focus {
+.form__input-container select {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form__input-container:has(select) svg {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+}
+
+.form__input-container input:focus,
+.form__input-container select:focus {
     box-shadow: none;
     outline: 1px solid var(--primary-color);
 }
