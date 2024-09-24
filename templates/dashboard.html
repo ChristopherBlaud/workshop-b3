@@ -5,18 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tableau de Bord</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
     </head>
     <body>
-        <header>
-
+        <header class="header">
+            <picture class="header__logo-container">
+                <img src="../static/images/logo-xs.svg" alt="logo epsi">
+            </picture>
+            <div class="header__user-informations">
+                <div class="header__user-informations__heading">
+                    <picture class="header__user-informations__heading__image-container">
+                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                    </picture>
+                    <div class="header__user-informations__heading__name">
+                        <span class="header__user-informations__heading__name__firstname">{{ user.firstname }}</span>
+                        <span class="header__user-informations__heading__name__lastname">{{ user.lastname }}</span>
+                    </div>
+                </div>
+                <div class="header__user-informations__body"> </div>
+            </div>
         </header>
-        <main>
-            <section class="dashboard">
-                <h1>Bienvenue sur votre tableau de bord, {{ user.firstname }} {{ user.lastname }} !</h1>
-                <p>Vous êtes maintenant connecté(e) avec l'email {{ user.email }}.</p>
-                <a href="{{ url_for('logout') }}">Déconnexion</a>
-            </section>
+        <main class="main-content">
+
         </main>
     </body>
 </html>

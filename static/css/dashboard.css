@@ -2,3 +2,56 @@ body {
     display: flex;
     flex-flow: row;
 }
+
+.header {
+    display: flex;
+    flex-flow: column;
+    width: 235px;
+    min-height: 100dvh;
+    padding-top: 32px;
+    background-color: var(--primary-color);
+}
+
+.header__logo-container {
+    display: flex;
+    padding-inline: 32px;
+}
+
+.header__user-informations {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    padding-top: 48px;
+    gap: 16px;
+}
+
+.header__user-informations__heading__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-100);
+}
+
+.header__user-informations__heading {
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    gap: 8px;
+    padding-inline: 32px;
+}
+
+.header__user-informations__body {
+    display: flex;
+    height: 100%;
+    padding-inline: 32px;
+    background-color: var(--primary-400);
+}
+
+.header__user-informations__heading__name {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 1.1;
+}
