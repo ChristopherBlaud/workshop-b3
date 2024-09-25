@@ -9,8 +9,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
     </head>
-    <body>
-        <div role="button" class="activities__container__card card--adding"></div>            
+    <body>         
         <header class="header">
             <picture class="header__logo-container">
                 <img src="../static/images/logo-xs.svg" alt="logo epsi" />
@@ -32,7 +31,8 @@
             </div>
         </header>
         <main class="main-content">
-            <div class="modal modal--activity">             
+            <div class="modal modal--activity"> 
+                <div role="button" class="activities__container__card card--adding"></div>            
                 <div class="form-wrapper">
                     <h2>Créer une activité</h2>
                     <form action="" method="POST" class="form form--activity">

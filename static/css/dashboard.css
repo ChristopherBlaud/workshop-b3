@@ -35,7 +35,7 @@ body {
     transition: opacity var(--transition) ease-in-out;
 }
 
-body > .activities__container__card.card--adding {
+.modal--activity .activities__container__card.card--adding {
     position: absolute;
     z-index: 5;
     top: 0;
@@ -44,11 +44,10 @@ body > .activities__container__card.card--adding {
     height: 100%;
     padding: 0;
     background: transparent;
-    pointer-events: none;
 }
 
-body:has(.modal--activity.active) > .activities__container__card.card--adding {
-    pointer-events: initial;
+.modal--activity .form-wrapper {
+    z-index: 6;
 }
 
 .modal--activity.active {
@@ -325,4 +324,59 @@ section.activities {
     .form.form--activity {
         min-width: 645px;
     }    
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-flow: column;
+        min-height: 100vh;
+    }
+    .main-content {
+        padding: 24px;
+    }
+
+    .header {
+        justify-content: space-between;
+        min-height: unset;
+        flex-basis: auto;
+        flex-flow: row;
+        padding: 24px;
+    }
+
+    .header__logo-container {
+        padding: 0;
+    }
+
+    .header__user-informations__heading {
+        padding: 0;
+    }
+
+    .header__logo-container img {
+        width: 100%;
+    }    
+
+    .header__user-informations__body {
+        display: none;
+    }
+    
+    .header__user-informations {
+        padding: 0;
+    }
+
+    .modal.modal--activity {
+        padding: 16px;
+    }
+
+    .file-button-wrapper {
+        flex-flow: column;
+        gap: 16px;
+    }
+
+    .modal--activity .form-wrapper {
+        width: 100%;
+    }
+
+    .form-wrapper h2 {
+        text-align: center;
+    }
 }
