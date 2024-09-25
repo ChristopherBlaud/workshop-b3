@@ -89,13 +89,17 @@
             <section class="activities">
                 <h3>Activitiés</h3>
                 <div class="activities__container">
+
+
+                    {% if user.is_admin %}
                     <div role="button" class="activities__container__card card--adding">
                        <div class="activities__container__card__icon-container">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C8.63118 0 9.14286 0.511675 9.14286 1.14286V6.85714H14.8571C15.4883 6.85714 16 7.36882 16 8C16 8.63118 15.4883 9.14286 14.8571 9.14286H9.14286V14.8571C9.14286 15.4883 8.63118 16 8 16C7.36882 16 6.85714 15.4883 6.85714 14.8571V9.14286H1.14286C0.511675 9.14286 0 8.63118 0 8C0 7.36882 0.511675 6.85714 1.14286 6.85714H6.85714V1.14286C6.85714 0.511675 7.36882 0 8 0Z" fill="#FBFBFF"/>
                             </svg>                        
                        </div> 
-                    </div>                    
+                    </div>     
+                    {% endif %}               
                     <article class="activities__container__card">
                         <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
                         <h4 class="activities__container__card__title">Jeux de rôle</h4>
