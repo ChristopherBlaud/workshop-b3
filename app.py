@@ -11,14 +11,38 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# Commentaire : Code utilisé pour créer la base de données et les tables
 
+# Code utilisé pour créer la base de données et les tables
 # Utilise ces lignes pour créer la base de données et les tables lors de la première exécution :
-"""
 # Connexion à la base de données
+"""
 conn = sqlite3.connect('CampusConnect.db')
+""""""
 
+#Creation de la table user_activity
+
+CREATE TABLE user_activité (
+    user_id INTEGER,
+    activité_id INTEGER,
+    PRIMARY KEY (user_id, activité_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (activité_id) REFERENCES activités(id)
+);
+
+""""""
+#Création du modèle d'actité "Activity"
+conn.execute('''
+    CREATE TABLE IF NOT EXISTS activity (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nom TEXT UNIQUE NOT NULL,
+        type TEXT UNIQUE NOT NULL,
+        description TEXT UNIQUE NOT NULL
+    );
+''')
+
+"""
 # Création de la table 'users'
+"""
 conn.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,7 +51,8 @@ conn.execute('''
         email TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL,
         identification_code TEXT NOT NULL,
-        campus_location TEXT NOT NULL
+        campus_location TEXT NOT NULL,
+        Admin TEXT NOT NULL DEFAULT 'Non',
     );
 ''')
 
