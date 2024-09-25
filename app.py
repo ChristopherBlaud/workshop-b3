@@ -15,21 +15,21 @@ def get_db_connection():
 # Code utilisé pour créer la base de données et les tables
 # Utilise ces lignes pour créer la base de données et les tables lors de la première exécution :
 # Connexion à la base de données
-"""
+
 conn = sqlite3.connect('CampusConnect.db')
-""""""
 
 #Creation de la table user_activity
+conn.execute('''
+    CREATE TABLE IF NOT EXISTS user_activity (
+        user_id INTEGER,
+        activity_id INTEGER,
+        PRIMARY KEY (user_id, activity_id),
+        FOREIGN KEY (user_id) REFERENCES users(id),
+        FOREIGN KEY (activity_id) REFERENCES activity(id)
+    );
+''')
 
-CREATE TABLE user_activité (
-    user_id INTEGER,
-    activité_id INTEGER,
-    PRIMARY KEY (user_id, activité_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (activité_id) REFERENCES activités(id)
-);
 
-""""""
 #Création du modèle d'actité "Activity"
 conn.execute('''
     CREATE TABLE IF NOT EXISTS activity (
@@ -40,9 +40,9 @@ conn.execute('''
     );
 ''')
 
-"""
+
 # Création de la table 'users'
-"""
+
 conn.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,7 +52,7 @@ conn.execute('''
         password TEXT NOT NULL,
         identification_code TEXT NOT NULL,
         campus_location TEXT NOT NULL,
-        Admin TEXT NOT NULL DEFAULT 'Non',
+        Admin TEXT NOT NULL DEFAULT 'Non'
     );
 ''')
 
@@ -67,7 +67,7 @@ conn.execute('''
 # Sauvegarde des modifications et fermeture de la connexion
 conn.commit()
 conn.close()
-"""
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -116,7 +116,7 @@ def login():
         conn.close()
 
         if user:
-            session['user'] = {'firstname': user['firstname'], 'lastname': user['lastname'], 'email': user['email']}
+            session['user'] = {'firstname': user['firstname'], 'lastname': user['lastname'], 'email': user['email'], 'campus': user['campus_location']}
             flash(f'Connexion réussie, bienvenue {user["firstname"]} {user["lastname"]}!')
             return redirect(url_for('dashboard'))
         else:

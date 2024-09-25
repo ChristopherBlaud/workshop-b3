@@ -1,0 +1,86 @@
+.form__wrapper:first-of-type {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 24px 16px;
+}
+
+.form__input-container {
+    display: flex;
+    position: relative;
+    flex-flow: column;
+    gap: 4px;
+    flex: 1 1 auto;
+}
+
+.form__input-container label {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--black-color);
+}
+
+.form__input-container input,
+.form__input-container select,
+.form__input-container textarea {
+    flex: 1 1 auto;
+    background-color: var(--gray-light);
+    padding: 12px 16px;
+    border: none;
+    box-shadow: 0px 1px 0px var(--gray-medium);
+    border-radius: 15px;
+    resize: none;
+}
+
+.form__input-container select {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form__input-container:has(select) svg {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+}
+
+.form__input-container input:focus,
+.form__input-container select:focus,
+.form__input-container textarea:focus {
+    box-shadow: none;
+    outline: 1px solid var(--primary-color);
+}
+
+.form__input-container #submit-btn {
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 16px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.form__input-container #submit-btn:hover {
+    background-color: var(--secondary-600);
+    transition: background-color var(--transition) ease-in-out;
+}
+
+.input {
+    display: flex;
+    position: relative;
+}
+
+.form__input-container__icon-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.form__input-container__icon-container.active {
+    display: flex;
+}

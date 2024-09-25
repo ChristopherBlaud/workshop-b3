@@ -7,27 +7,162 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
     </head>
     <body>
+        <div role="button" class="activities__container__card card--adding"></div>            
         <header class="header">
             <picture class="header__logo-container">
-                <img src="../static/images/logo-xs.svg" alt="logo epsi">
+                <img src="../static/images/logo-xs.svg" alt="logo epsi" />
             </picture>
             <div class="header__user-informations">
                 <div class="header__user-informations__heading">
                     <picture class="header__user-informations__heading__image-container">
-                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                        <img src="../static/images/user-placeholder.svg" alt="placeholder" />
                     </picture>
-                    <div class="header__user-informations__heading__name">
-                        <span class="header__user-informations__heading__name__firstname">{{ user.firstname }}</span>
-                        <span class="header__user-informations__heading__name__lastname">{{ user.lastname }}</span>
+                    <div>
+                        <div class="header__user-informations__heading__name">
+                            <span class="header__user-informations__heading__name__lastname">{{ user.lastname }}</span>
+                            <span class="header__user-informations__heading__name__firstname">{{ user.firstname }}</span>
+                        </div>
+                        <span class="header__user-informations__heading__campus">Campus de Montpellier</span>
                     </div>
                 </div>
-                <div class="header__user-informations__body"> </div>
+                <div class="header__user-informations__body"></div>
             </div>
         </header>
         <main class="main-content">
-
+            <div class="modal modal--activity">             
+                <div class="form-wrapper">
+                    <h2>Créer une activité</h2>
+                    <form action="" method="POST" class="form form--activity">
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="title">Titre</label>
+                                <input type="text" name="title" id="title" placeholder="Jeux de rôle" required />
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="category">Type d'activité</label>
+                                <div class="input">
+                                    <select name="category" id="category">
+                                        <option value="physical">Présentiel</option>
+                                        <option value="remote">Distanciel</option>
+                                        <option value="all">Les deux</option>
+                                    </select>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12.0711 13.314L17.0211 8.364C17.1134 8.26849 17.2237 8.19231 17.3457 8.1399C17.4677 8.08749 17.599 8.05991 17.7317 8.05875C17.8645 8.0576 17.9962 8.0829 18.1191 8.13318C18.242 8.18346 18.3536 8.25772 18.4475 8.35161C18.5414 8.4455 18.6157 8.55715 18.666 8.68005C18.7162 8.80295 18.7415 8.93463 18.7404 9.06741C18.7392 9.20018 18.7117 9.3314 18.6592 9.45341C18.6068 9.57541 18.5307 9.68576 18.4351 9.778L12.7781 15.435C12.5906 15.6225 12.3363 15.7278 12.0711 15.7278C11.806 15.7278 11.5517 15.6225 11.3641 15.435L5.70714 9.778C5.61163 9.68576 5.53545 9.57541 5.48304 9.45341C5.43063 9.3314 5.40305 9.20018 5.40189 9.06741C5.40074 8.93463 5.42604 8.80295 5.47632 8.68005C5.5266 8.55715 5.60086 8.4455 5.69475 8.35161C5.78864 8.25772 5.90029 8.18346 6.02319 8.13318C6.14609 8.0829 6.27777 8.0576 6.41054 8.05875C6.54332 8.05991 6.67454 8.08749 6.79655 8.1399C6.91855 8.19231 7.0289 8.26849 7.12114 8.364L12.0711 13.314Z"
+                                            fill="#697077"
+                                        />
+                                    </svg>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="form__input-container">
+                                <label for="category">Description</label>
+                                <div class="input">
+                                    <textarea name="description" id="description" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__wrapper">
+                            <div class="file-button-wrapper">
+                                <input type="file" name="image" id="image">
+                                <button class="file-button">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3C0 1.34315 1.34315 0 3 0H17C18.6569 0 20 1.34315 20 3V17C20 18.6569 18.6569 20 17 20H3C1.34315 20 0 18.6569 0 17V3ZM7.14286 11.4286L10 14.2857L17.1429 7.14286V17.1429H2.85714V15.7143L7.14286 11.4286ZM7.85714 8.57143C9.04061 8.57143 10 7.61204 10 6.42857C10 5.2451 9.04061 4.28571 7.85714 4.28571C6.67367 4.28571 5.71429 5.2451 5.71429 6.42857C5.71429 7.61204 6.67367 8.57143 7.85714 8.57143Z" fill="#FBFBFF"/>
+                                    </svg>                                
+                                    <span>Ajouter une image</span>
+                                </button>
+                                <span class="file-button__image-name">ma-super-image.jpg</span>
+                            </div>
+                            <div class="form__input-container">
+                                <button type="submit" name="submit-btn" id="submit-btn">Enregistrer mon activité</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <section class="activities">
+                <h3>Activitiés</h3>
+                <div class="activities__container">
+                    <div role="button" class="activities__container__card card--adding">
+                       <div class="activities__container__card__icon-container">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C8.63118 0 9.14286 0.511675 9.14286 1.14286V6.85714H14.8571C15.4883 6.85714 16 7.36882 16 8C16 8.63118 15.4883 9.14286 14.8571 9.14286H9.14286V14.8571C9.14286 15.4883 8.63118 16 8 16C7.36882 16 6.85714 15.4883 6.85714 14.8571V9.14286H1.14286C0.511675 9.14286 0 8.63118 0 8C0 7.36882 0.511675 6.85714 1.14286 6.85714H6.85714V1.14286C6.85714 0.511675 7.36882 0 8 0Z" fill="#FBFBFF"/>
+                            </svg>                        
+                       </div> 
+                    </div>                    
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>             
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>             
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>             
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>
+                    <article class="activities__container__card">
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
+                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <div class="activities__container__card__category">
+                            <span class="activities__container__card__category__type physical">Présentiel</span>
+                            <span class="activities__container__card__category__type remote">À distance</span>
+                        </div>
+                    </article>                                                                                
+                </div>
+            </section>
         </main>
+        <script src="../static/js/dashboard.js"></script>
     </body>
 </html>

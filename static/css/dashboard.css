@@ -6,10 +6,68 @@ body {
 .header {
     display: flex;
     flex-flow: column;
-    width: 235px;
+    flex: 0 0 270px;
     min-height: 100dvh;
     padding-top: 32px;
     background-color: var(--primary-color);
+}
+
+.main-content {
+    position: relative;
+    flex: auto;
+    padding: 32px;
+    overflow: hidden;
+}
+
+.modal.modal--activity {
+    display: flex;
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition) ease-in-out;
+}
+
+body > .activities__container__card.card--adding {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    pointer-events: none;
+}
+
+body:has(.modal--activity.active) > .activities__container__card.card--adding {
+    pointer-events: initial;
+}
+
+.modal--activity.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.modal.modal--activity::before {
+    content: "";
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-950);
+    opacity: 0.6;
 }
 
 .header__logo-container {
@@ -29,6 +87,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -51,7 +110,219 @@ body {
 }
 
 .header__user-informations__heading__name {
-    color: #FFF;
+    display: flex;
+    flex-flow: row;
+    gap: 4px;
+    color: #fff;
     font-size: 14px;
     line-height: 1.1;
+}
+
+.header__user-informations__heading__campus {
+    color: white;
+    font-size: 12px;
+    line-height: 1.1;
+}
+
+.form-wrapper {
+    z-index: 2;
+}
+
+.form-wrapper,
+.form.form--activity {
+    display: flex;
+    flex-flow: column;
+}
+
+.form-wrapper {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    padding: 32px;
+    gap: 32px;
+}
+
+.form.form--activity {
+    gap: 16px;
+}
+
+button.file-button {
+    border: none;
+    padding: 16px 24px 16px 12px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    border: 1px solid var(--black-color);
+}
+
+button.file-button svg path,
+button.file-button span {
+    color: var(--black-color);
+    fill: currentColor;
+    cursor: pointer;
+}
+
+.form__wrapper:has(.file-button) {
+    display: flex;
+    flex-flow: column;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.file-button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.file-button-wrapper input[type="file"] {
+    display: none;
+}
+
+section.activities {
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+}
+
+.activities__container {
+    display: flex;
+    flex-flow: row;
+    gap: 16px;
+    overflow: scroll;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+}
+
+.activities__container::-webkit-scrollbar {
+    display: none;
+}
+
+.activities__container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.activities__container__card {
+    display: flex;
+    position: relative;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 8px;
+    width: 200px;
+    height: 175px;
+    padding: 16px;
+    color: var(--white-color);
+    border-radius: 8px;
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.activities__container__card:not(.card--adding)::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(106,101,124,0) 0%, rgba(106,101,124,1) 90%);
+    pointer-events: none;
+}
+
+.activities__container__card.card--adding {
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-accent-color);
+    box-shadow: 2px 2px 0px rgb(33, 39, 42, 15%);
+}
+
+.activities__container .activities__container__card.card--adding {
+    position: sticky;
+    left: 0;
+    z-index: 3;    
+    cursor: pointer;
+}
+
+.activities__container__card__icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--gray-medium);
+}
+
+.activities__container__card__title, 
+.activities__container__card__category {
+    z-index: 2;
+}
+
+.activities__container__card__image {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.activities__container__card__category__type {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 1.1;
+    border: 1px solid;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.activities__container__card__category__type::before {
+    content: "";
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.activities__container__card__category__type.physical {
+    border-color: var(--secondary-color);
+}
+
+.activities__container__card__category__type.physical:before  {
+    background-color: var(--secondary-color);
+}
+
+.activities__container__card__category__type.remote {
+    border-color: var(--primary-color);
+}
+
+.activities__container__card__category__type.remote:before  {
+    background-color: var(--primary-color);
+}
+
+.activities__container__card__category {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (min-width: 1024px) {
+    .form.form--activity {
+        min-width: 645px;
+    }    
 }
