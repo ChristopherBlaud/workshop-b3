@@ -1,14 +1,21 @@
-from app import app, db, IdentificationCode
+import sqlite3
 
-# Créer la base de données et les tables
-with app.app_context():
-    db.create_all()
+# Fonction de connexion à la base de données SQLite
+def get_db_connection():
+    conn = sqlite3.connect('CampusConnect.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
-    # Ajouter des codes d'identification
-    codes = ['CODE123', '456', 'CODE789']  # Remplace par tes propres codes
-    for code in codes:
-        new_code = IdentificationCode(code=code)
-        db.session.add(new_code)
+# Ajout des codes d'identification dans la base de données
+codes = ['CODE123', 'CODE456', 'CODE789']
 
-    db.session.commit()
-    print("Codes d'identification ajoutés avec succès !")
+# Connexion à la base de données
+conn = get_db_connection()
+
+# Ajout des codes d'identification à la table 'identification_codes'
+for code in codes:
+    conn.execute('INSERT INTO identification_codes (code) VALUES (?)', (code,))
+
+# Sauvegarde des changements et fermeture de la connexion
+conn.commit()
+conn.close()
