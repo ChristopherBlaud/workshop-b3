@@ -110,8 +110,10 @@
                     </div>
                     <div class="activity-informations__button-container">
                         <button class="button button--join">Rejoindre l’activité</button>
+                        {% if user.is_admin %}
                         <button class="button button--edit">Modifier</button>
                         <button class="button button--delete">Supprimer</button>
+                        {% endif %}
                     </div>
                 </div>
             </div>

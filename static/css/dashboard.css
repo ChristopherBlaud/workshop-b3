@@ -556,4 +556,14 @@ section.activities {
     .form-wrapper h2 {
         text-align: center;
     }
+
+    .modal--join .activity-informations {
+        width: calc(100% - 32px);
+    }    
+}
+
+@media (min-width: 769px) {
+    .header__logo-container {
+        margin-inline: auto;
+    }
 }
