@@ -261,6 +261,7 @@ img {
     align-items: center;
     gap: 16px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .header__user-informations__body__activities__list__item:before {
@@ -496,6 +497,10 @@ section.activities {
     display: flex;
     flex-flow: column;
     gap: 16px;
+}
+
+.activitiy-content:not(.active) {
+    display: none;
 }
 
 .activitiy-content__body {

@@ -32,16 +32,20 @@
                             <span class="header__user-informations__heading__campus">Campus de {{ user.campus }}</span>
                         </div>
                     </div>
+                    {% if user_activity %}
                     <div class="header__user-informations__body">
                         <div class="header__user-informations__body__activities">
                             <span class="header__user-informations__body__activities__title">
                                 <strong>Mes activités</strong>
                             </span>
-                            {% for activity in user_activity %}
-                            <li class="header__user-informations__body__activities__list__item">{{ activity['nom'] }}</li>
-                            {% endfor %}
+                            <ul class="header__user-informations__body__activities__list">
+                                {% for activity in user_activity %}
+                                <li class="header__user-informations__body__activities__list__item">{{ activity['nom'] }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </header>

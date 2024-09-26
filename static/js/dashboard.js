@@ -10,7 +10,10 @@
     joinActivityButtons = document.querySelectorAll(".activity-informations__button-container .button--join"),
     header = document.querySelector(".header"),
     userInformationsContainer = document.querySelector(".header__user-informations"),
-    userActivitiesList = document.querySelector(".header__user-informations__body");
+    userActivitiesList = document.querySelector(".header__user-informations__body"),
+    userActivitiesListItems = userActivitiesList.querySelectorAll(".header__user-informations__body__activities__list__item"),
+    postsSection = document.querySelector(".activitiy-content"),
+    postsSectionTitle = postsSection.querySelector("h2");
 
     // Affiche les données dans la modal
     const showModalActivityInformations = (data) => {
@@ -128,5 +131,12 @@
         } else {
             userInformationsContainer.appendChild(userActivitiesList)
         }
-    })
+    });
+
+    userActivitiesListItems && userActivitiesListItems.forEach(userActivitiesListItem => {
+        userActivitiesListItem.addEventListener("click", () => {
+            postsSection.classList.add("active");
+            postsSectionTitle.textContent = userActivitiesListItem.textContent;
+        })
+    });
 })();
