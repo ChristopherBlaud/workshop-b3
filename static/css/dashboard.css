@@ -32,6 +32,11 @@ body {
     color: var(--white-color);
 }
 
+.header-wrapper {
+    flex: auto;
+    padding-top: 0;
+}
+
 img {
     width: 100%;
     height: 100%;
@@ -596,6 +601,10 @@ section.activities {
 
     .header__logo-container {
         padding: 0;
+    }
+
+    .header__logo-container {
+        max-width: 90px;
     }
 
     .header__logo-container img {
