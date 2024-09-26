@@ -6,7 +6,8 @@
     fileInput = document.querySelector("#image"),
     fileNameContainer = document.querySelector(".file-button__image-name"),
     fakeButtonFile = document.querySelector(".file-button"),
-    activityCards = document.querySelectorAll(".activities__container__card:not(.card--adding)");
+    activityCards = document.querySelectorAll(".activities__container__card:not(.card--adding)"),
+    joinActivityButtons = document.querySelectorAll(".activity-informations__button-container .button--join");
 
     // Affiche les données dans la modal
     const showModalActivityInformations = (data) => {
@@ -14,6 +15,8 @@
             title = container.querySelector(".activity-informations__heading__text h2"),
             category = container.querySelector(".activity-informations__heading__text__category span"),
             description = container.querySelector(".activity-informations__body p");
+
+            container.dataset.id = data.id;
 
             title.textContent = data.nom;
 
@@ -23,18 +26,18 @@
             description.textContent = data.description;
     };
 
-    const showBodyActivityInformations = (data) => {
-        const container = document.querySelector(".activity-informations"),
-            title = container.querySelector(".activity-informations__heading__text h2"),
-            category = container.querySelector(".activity-informations__heading__text__category span"),
-            description = container.querySelector(".activity-informations__body p");
-
-            title.textContent = data.nom;
-
-            category.classList.add(`${data.type}`);
-            category.textContent = data.type === "physical" ? "Présentiel" : data.type === "remote" ? "À distance" : "Présentiel / À distance";
-
-            description.textContent = data.description;
+    const joinActivity = async (activityID) => {
+        try {
+            const response = await fetch("http://127.0.0.1:5000/dashboard/join", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ activity_id: activityID})
+            });
+        } catch (error) {
+            console.error(error);
+        };        
     };
 
     // Fetch les données de l'activité dont l'id est passé en paramètre de l'url
@@ -91,9 +94,17 @@
 
             activityID && getActivityInformations(activityID);
             activityJoinModal.classList.add("active");
-
         })
     });
+
+    joinActivityButtons && joinActivityButtons.forEach(joinActivityButton => {
+        
+        joinActivityButton.addEventListener("click", () => {
+            const activityID = joinActivityButton.closest(".activity-informations").dataset.id;
+
+            joinActivity(activityID);
+        })
+    })
 
 
     // Affiche le nom du fichier image
