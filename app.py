@@ -12,7 +12,6 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-
 # Code utilisé pour créer la base de données et les tables
 # Utilise ces lignes pour créer la base de données et les tables lors de la première exécution :
 # Connexion à la base de données
@@ -66,6 +65,38 @@ conn.execute('''
 conn.commit()
 conn.close()
 
+@app.route('/dashboard/join', methods=['POST'])
+def join_activity():
+    try:
+        # Récupérer l'ID de l'utilisateur connecté (tu dois l'avoir stocké dans la session)
+        user_id = session.get('user')['user_id']
+        if not user_id:
+            return jsonify({"error": "User not logged in"}), 403
+
+        data = request.get_json()
+        activity_id = data.get('activity_id')
+
+        if not activity_id:
+            return jsonify({"error": "Activity ID is required"}), 400
+
+        # Vérifie si l'utilisateur a déjà rejoint cette activité
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM user_activity WHERE user_id = ? AND activity_id = ?", (user_id, activity_id))
+        already_joined = cursor.fetchone()
+
+        if already_joined:
+            return jsonify({"error": "You have already joined this activity"}), 400
+
+        # Insère l'enregistrement dans la table user_activity
+        cursor.execute("INSERT INTO user_activity (user_id, activity_id) VALUES (?, ?)", (user_id, activity_id))
+        conn.commit()
+        conn.close()
+
+        return jsonify({"success": "Activity joined successfully"}), 200
+    except Exception as e:
+        print(f"Erreur serveur : {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -119,6 +150,7 @@ def login():
         if user:
             # Stocker les informations de l'utilisateur dans la session, y compris s'il est admin
             session['user'] = {
+                'user_id': user['id'],
                 'firstname': user['firstname'], 
                 'lastname': user['lastname'],
                 'is_admin': bool(user['Admin'])  # Convertir l'Admin en booléen

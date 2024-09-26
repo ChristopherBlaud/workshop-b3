@@ -6,13 +6,30 @@ body {
     flex-flow: row;
 }
 
-.header {
+.activities__container::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+  
+.activities__container::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 24px;
+}
+  
+.activities__container::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 24px;
+    border: 5px solid #fff;
+}
+
+.header,
+.header-wrapper {
     display: flex;
     flex-flow: column;
     flex: 0 0 270px;
     min-height: 100dvh;
     padding-top: 32px;
     background-color: var(--primary-color);
+    color: var(--white-color);
 }
 
 img {
@@ -188,7 +205,7 @@ img {
     flex-flow: column;
     height: 100%;
     padding-top: 48px;
-    gap: 16px;
+    gap: 32px;
 }
 
 .header__user-informations__heading__image-container {
@@ -217,8 +234,37 @@ img {
 .header__user-informations__body {
     display: flex;
     height: 100%;
-    padding-inline: 32px;
+    padding: 32px;
     background-color: var(--primary-400);
+}
+
+.header__user-informations__body__activities {
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+}
+
+.header__user-informations__body__activities__list {
+    display: flex;
+    flex-flow: column;
+    gap: 8px;    
+    padding-left: 16px;
+}
+
+.header__user-informations__body__activities__list__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.header__user-informations__body__activities__list__item:before {
+    content: "";
+    display: flex;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
 }
 
 .header__user-informations__heading__name {
@@ -529,11 +575,21 @@ section.activities {
         padding: 24px;
     }
 
-    .header {
+    .header,
+    .header-wrapper {
         justify-content: space-between;
         min-height: unset;
         flex-basis: auto;
         flex-flow: row;
+    }
+
+    .header-wrapper {
+        padding: 0;
+    }
+
+    .header {
+        flex-flow: column;
+        gap: 16px;
         padding: 24px;
     }
 
@@ -550,7 +606,24 @@ section.activities {
     }    
 
     .header__user-informations__body {
-        display: none;
+        padding: 0;
+        background-color: transparent;
+        overflow: hidden;
+    }
+
+    .header__user-informations__body__activities {
+        gap: 32px;
+        max-width: 100%;
+    }
+
+    .header__user-informations__body__activities,
+    .header__user-informations__body__activities__list {
+        flex-flow: row;
+        flex-shrink: 0;
+    }
+
+    .header__user-informations__body__activities__list {
+        padding: 0;
     }
     
     .header__user-informations {

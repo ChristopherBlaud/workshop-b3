@@ -7,7 +7,9 @@
     fileNameContainer = document.querySelector(".file-button__image-name"),
     fakeButtonFile = document.querySelector(".file-button"),
     activityCards = document.querySelectorAll(".activities__container__card:not(.card--adding)"),
-    joinActivityButtons = document.querySelectorAll(".activity-informations__button-container .button--join");
+    joinActivityButtons = document.querySelectorAll(".activity-informations__button-container .button--join"),
+    header = document.querySelector(".header"),
+    userActivitiesList = document.querySelector(".header__user-informations__body");
 
     // Affiche les données dans la modal
     const showModalActivityInformations = (data) => {
@@ -35,6 +37,8 @@
                 },
                 body: JSON.stringify({ activity_id: activityID})
             });
+
+            const result = await response.json();
         } catch (error) {
             console.error(error);
         };        
@@ -100,13 +104,18 @@
     joinActivityButtons && joinActivityButtons.forEach(joinActivityButton => {
         
         joinActivityButton.addEventListener("click", () => {
-            const activityID = joinActivityButton.closest(".activity-informations").dataset.id;
+            const activityID = Number(joinActivityButton.closest(".activity-informations").dataset.id);
 
             joinActivity(activityID);
         })
     })
 
-
     // Affiche le nom du fichier image
     fileInput.addEventListener("change", (e) => fileNameContainer.textContent = e.target.files[0].name);
+
+    // Modifie le layout du header sur mobile
+    console.log(window.innerWidth)
+    if (window.innerWidth <= 768) {
+        header.appendChild(userActivitiesList);
+    }
 })();
