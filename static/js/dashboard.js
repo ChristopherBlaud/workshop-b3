@@ -9,6 +9,7 @@
     activityCards = document.querySelectorAll(".activities__container__card:not(.card--adding)"),
     joinActivityButtons = document.querySelectorAll(".activity-informations__button-container .button--join"),
     header = document.querySelector(".header"),
+    userInformationsContainer = document.querySelector(".header__user-informations"),
     userActivitiesList = document.querySelector(".header__user-informations__body");
 
     // Affiche les données dans la modal
@@ -114,8 +115,13 @@
     fileInput.addEventListener("change", (e) => fileNameContainer.textContent = e.target.files[0].name);
 
     // Modifie le layout du header sur mobile
-    console.log(window.innerWidth)
-    if (window.innerWidth <= 768) {
-        header.appendChild(userActivitiesList);
-    }
+    window.innerWidth <= 768 && header.appendChild(userActivitiesList);
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth <= 768) {
+            header.appendChild(userActivitiesList);
+        } else {
+            userInformationsContainer.appendChild(userActivitiesList)
+        }
+    })
 })();

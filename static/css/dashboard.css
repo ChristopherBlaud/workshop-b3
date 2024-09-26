@@ -584,17 +584,22 @@ section.activities {
     }
 
     .header-wrapper {
+        gap: 16px;
         padding: 0;
     }
 
     .header {
         flex-flow: column;
-        gap: 16px;
+        gap: 24px;
         padding: 24px;
     }
 
     .header__logo-container {
         padding: 0;
+    }
+
+    .header__logo-container img {
+        object-fit: contain;
     }
 
     .header__user-informations__heading {
@@ -611,9 +616,8 @@ section.activities {
         overflow: hidden;
     }
 
-    .header__user-informations__body__activities {
-        gap: 32px;
-        max-width: 100%;
+    .header__user-informations__body__activities__title {
+        white-space: nowrap;
     }
 
     .header__user-informations__body__activities,
@@ -622,8 +626,21 @@ section.activities {
         flex-shrink: 0;
     }
 
+    .header__user-informations__body__activities {
+        flex-flow: column;
+        width: 100%;
+        gap: 8px;
+    }
+
     .header__user-informations__body__activities__list {
         padding: 0;
+        gap: 24px;
+        overflow: auto;
+    }
+
+    .header__user-informations__body__activities__list__item {
+        white-space: nowrap;
+        gap: 8px;
     }
     
     .header__user-informations {
