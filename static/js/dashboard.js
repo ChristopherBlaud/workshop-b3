@@ -11,7 +11,7 @@
     header = document.querySelector(".header"),
     userInformationsContainer = document.querySelector(".header__user-informations"),
     userActivitiesList = document.querySelector(".header__user-informations__body"),
-    userActivitiesListItems = userActivitiesList.querySelectorAll(".header__user-informations__body__activities__list__item"),
+    userActivitiesListItems = document.querySelectorAll(".header__user-informations__body__activities__list__item"),
     postsSection = document.querySelector(".activitiy-content"),
     postsSectionTitle = postsSection.querySelector("h2");
 
@@ -130,9 +130,10 @@
             header.appendChild(userActivitiesList);
         } else {
             userInformationsContainer.appendChild(userActivitiesList)
-        }
+        };
     });
 
+    // Met à jour le titre de la section publication au clique sur les liens du header
     userActivitiesListItems && userActivitiesListItems.forEach(userActivitiesListItem => {
         userActivitiesListItem.addEventListener("click", () => {
             postsSection.classList.add("active");
