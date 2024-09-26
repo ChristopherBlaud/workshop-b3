@@ -59,6 +59,10 @@ img {
 }
 
 .modal--activity .form-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 6;
 }
 
@@ -299,7 +303,6 @@ section.activities {
     flex-flow: row;
     gap: 16px;
     overflow: scroll;
-    padding-bottom: 4px;
     scroll-snap-type: x mandatory;
 }
 
@@ -354,8 +357,7 @@ section.activities {
 .activities__container__card.card--adding {
     justify-content: center;
     align-items: center;
-    background-color: var(--white-accent-color);
-    box-shadow: 2px 2px 0px rgb(33, 39, 42, 15%);
+    background-color: var(--gray-light);
 }
 
 .activities__container .activities__container__card.card--adding {
@@ -445,6 +447,12 @@ section.activities {
     gap: 16px;
 }
 
+.activitiy-content__body {
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+}
+
 .activitiy-content h3 {
     font-weight: 500;
 }
@@ -492,8 +500,22 @@ section.activities {
     background-color: var(--white-accent-color);
 }
 
+.activitiy-content__body__posts__post-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.activitiy-content__body__posts__post__delete-button {
+    padding-inline: 32px;
+}
+
 @media (min-width: 1024px) {
     .form.form--activity {
+        min-width: 645px;
+    }    
+
+    .modal--join .activity-informations {
         min-width: 645px;
     }    
 }
@@ -559,6 +581,10 @@ section.activities {
 
     .modal--join .activity-informations {
         width: calc(100% - 32px);
+    }    
+
+    .activitiy-content__body__posts__post__delete-button {
+        padding-inline: 16px;
     }    
 }
 
