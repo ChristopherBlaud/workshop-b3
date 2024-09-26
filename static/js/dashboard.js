@@ -8,19 +8,48 @@
     fakeButtonFile = document.querySelector(".file-button"),
     activityCards = document.querySelectorAll(".activities__container__card:not(.card--adding)");
 
-    const showActivityInformations = (data) => {
+    // Affiche les données dans la modal
+    const showModalActivityInformations = (data) => {
         const container = document.querySelector(".activity-informations"),
-            image = container.querySelector(".activity-informations__heading__image-container img"),
             title = container.querySelector(".activity-informations__heading__text h2"),
-            category = container.querySelector(".activity-informations__heading__text__category"),
+            category = container.querySelector(".activity-informations__heading__text__category span"),
             description = container.querySelector(".activity-informations__body p");
+
+            title.textContent = data.nom;
+
+            category.classList.add(`${data.type}`);
+            category.textContent = data.type === "physical" ? "Présentiel" : data.type === "remote" ? "À distance" : "Présentiel / À distance";
+
+            description.textContent = data.description;
     };
 
+    const showBodyActivityInformations = (data) => {
+        const container = document.querySelector(".activity-informations"),
+            title = container.querySelector(".activity-informations__heading__text h2"),
+            category = container.querySelector(".activity-informations__heading__text__category span"),
+            description = container.querySelector(".activity-informations__body p");
+
+            title.textContent = data.nom;
+
+            category.classList.add(`${data.type}`);
+            category.textContent = data.type === "physical" ? "Présentiel" : data.type === "remote" ? "À distance" : "Présentiel / À distance";
+
+            description.textContent = data.description;
+    };
+
+    // Fetch les données de l'activité dont l'id est passé en paramètre de l'url
     const getActivityInformations = async (activityID) => {
         try {
-            const data = await fetch(`http://127.0.0.1/dashboard/activity/${activityID}`);
+            const response = await fetch(`http://127.0.0.1:5000/dashboard/activity/${activityID}`);
 
-            data && showActivityInformations(data);
+            const result = await response.json();
+
+            if (response.ok) {
+                showModalActivityInformations(result);
+            } else {
+                console.error("Error", result)
+            }
+
         } catch (error) {
             console.error(error);
         };
@@ -58,7 +87,11 @@
     // Ouvre la modal des informations d'activité au clique
     activityCards && activityCards.forEach(activityCard => {
         activityCard.addEventListener("click", () => {
+            const activityID = activityCard.dataset.id;
+
+            activityID && getActivityInformations(activityID);
             activityJoinModal.classList.add("active");
+
         })
     });
 

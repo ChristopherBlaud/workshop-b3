@@ -187,8 +187,7 @@ def show_activity(activity_id):
             "id": activity[0],
             "nom": activity[1],
             "type": activity[2],
-            "description": activity[3],
-            "image": activity[4]  # Si tu as une image dans la base
+            "description": activity[3]
         }
         return jsonify(activity_data)  # Renvoyer les données en JSON
     else:

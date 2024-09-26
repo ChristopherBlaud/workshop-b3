@@ -116,7 +116,7 @@
                 </div>
             </div>
             <section class="activities">
-                <h3>Activitiés</h3>
+                <h3>Activités disponibles</h3>
                 <div class="activities__container">
                     {% if user.is_admin %}
                     <div role="button" class="activities__container__card card--adding">
@@ -128,14 +128,118 @@
                     </div>     
                     {% endif %}               
                     {% for activity in activities %}
-                    <article class="activities__container__card">
+                    <article class="activities__container__card" data-id="{{ activity.id }}">
                         <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo de {{ activity.nom }}">
                         <h4 class="activities__container__card__title">{{ activity.nom }}</h4>
                         <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type {{ activity.type }}">{{ activity.type }}</span>
+                            <span class="activities__container__card__category__type {{ activity.type }}">
+                                {% if activity.type == "physical" %}
+                                Présentiel
+                                {% elif activity.type == "remote" %}
+                                À Distance
+                                {% else %}
+                                Présentiel / À Distance
+                                {% endif %}
+                            </span>
                         </div>
                     </article>
                     {% endfor %}                                                                           
+                </div>
+            </section>
+            <section class="activitiy-content">
+                <div class="activitiy-content__heading">
+                    <h2>Jeux de rôle</h2>                    
+                </div>
+                <div class="activitiy-content__body">
+                    {% if user.is_admin %}
+                    <h3>Publications</h3>
+                    {% endif %}
+                    <div class="activitiy-content__body__posts">
+                        <div class="activitiy-content__body__posts__post-container">
+                            <article class="activitiy-content__body__posts__post">
+                                <div class="activitiy-content__body__posts__post__heading">
+                                    <picture class="activitiy-content__body__posts__post__heading__image-container">
+                                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                                    </picture>
+                                    <div class="activitiy-content__body__posts__post__heading__text">
+                                        <span class="activitiy-content__body__posts__post__heading__text__name">Christopher BLAUD</span>
+                                        <span class="activitiy-content__body__posts__post__heading__text__created">Le 24 septembre</span>
+                                    </div>
+                                </div>
+                                <p class="activitiy-content__body__posts__post__body">Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                            </article>
+                        </div>
+                        <div class="activitiy-content__body__posts__post-container">
+                            <article class="activitiy-content__body__posts__post">
+                                <div class="activitiy-content__body__posts__post__heading">
+                                    <picture class="activitiy-content__body__posts__post__heading__image-container">
+                                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                                    </picture>
+                                    <div class="activitiy-content__body__posts__post__heading__text">
+                                        <span class="activitiy-content__body__posts__post__heading__text__name">Christopher BLAUD</span>
+                                        <span class="activitiy-content__body__posts__post__heading__text__created">Le 24 septembre</span>
+                                    </div>
+                                </div>
+                                <p class="activitiy-content__body__posts__post__body">Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                            </article>
+                        </div>
+                        <div class="activitiy-content__body__posts__post-container">
+                            <article class="activitiy-content__body__posts__post">
+                                <div class="activitiy-content__body__posts__post__heading">
+                                    <picture class="activitiy-content__body__posts__post__heading__image-container">
+                                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                                    </picture>
+                                    <div class="activitiy-content__body__posts__post__heading__text">
+                                        <span class="activitiy-content__body__posts__post__heading__text__name">Christopher BLAUD</span>
+                                        <span class="activitiy-content__body__posts__post__heading__text__created">Le 24 septembre</span>
+                                    </div>
+                                </div>
+                                <p class="activitiy-content__body__posts__post__body">Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                            </article>
+                        </div>    
+                        <div class="activitiy-content__body__posts__post-container">
+                            <article class="activitiy-content__body__posts__post">
+                                <div class="activitiy-content__body__posts__post__heading">
+                                    <picture class="activitiy-content__body__posts__post__heading__image-container">
+                                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                                    </picture>
+                                    <div class="activitiy-content__body__posts__post__heading__text">
+                                        <span class="activitiy-content__body__posts__post__heading__text__name">Christopher BLAUD</span>
+                                        <span class="activitiy-content__body__posts__post__heading__text__created">Le 24 septembre</span>
+                                    </div>
+                                </div>
+                                <p class="activitiy-content__body__posts__post__body">Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                            </article>
+                        </div>
+                        <div class="activitiy-content__body__posts__post-container">
+                            <article class="activitiy-content__body__posts__post">
+                                <div class="activitiy-content__body__posts__post__heading">
+                                    <picture class="activitiy-content__body__posts__post__heading__image-container">
+                                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                                    </picture>
+                                    <div class="activitiy-content__body__posts__post__heading__text">
+                                        <span class="activitiy-content__body__posts__post__heading__text__name">Christopher BLAUD</span>
+                                        <span class="activitiy-content__body__posts__post__heading__text__created">Le 24 septembre</span>
+                                    </div>
+                                </div>
+                                <p class="activitiy-content__body__posts__post__body">Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                            </article>
+                        </div>
+                        <div class="activitiy-content__body__posts__post-container">
+                            <article class="activitiy-content__body__posts__post">
+                                <div class="activitiy-content__body__posts__post__heading">
+                                    <picture class="activitiy-content__body__posts__post__heading__image-container">
+                                        <img src="../static/images/user-placeholder.svg" alt="placeholder">
+                                    </picture>
+                                    <div class="activitiy-content__body__posts__post__heading__text">
+                                        <span class="activitiy-content__body__posts__post__heading__text__name">Christopher BLAUD</span>
+                                        <span class="activitiy-content__body__posts__post__heading__text__created">Le 24 septembre</span>
+                                    </div>
+                                </div>
+                                <p class="activitiy-content__body__posts__post__body">Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                            </article>
+                        </div>                                                                        
+                    </div>
                 </div>
             </section>
         </main>
