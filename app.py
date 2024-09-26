@@ -17,54 +17,54 @@ def get_db_connection():
 # Utilise ces lignes pour créer la base de données et les tables lors de la première exécution :
 # Connexion à la base de données
 
-# conn = sqlite3.connect('CampusConnect.db')
-#Creation de la table user_activity
+conn = sqlite3.connect('CampusConnect.db')
+# Creation de la table user_activity
 
-# conn.execute('''
-#     CREATE TABLE user_activité (
-#         user_id INTEGER,
-#         activité_id INTEGER,
-#         PRIMARY KEY (user_id, activité_id),
-#         FOREIGN KEY  (user_id) REFERENCES users(id),
-#         FOREIGN KEY (activité_id) REFERENCES activités(id)
-#    ); 
-# ''')
+conn.execute('''
+    CREATE TABLE IF NOT EXISTS user_activity (
+        user_id INTEGER,
+        activity_id INTEGER,
+        PRIMARY KEY (user_id, activity_id),
+        FOREIGN KEY  (user_id) REFERENCES users(id),
+        FOREIGN KEY (activity_id) REFERENCES activity(id)
+   ); 
+''')
 
-# #Création du modèle d'actité "Activity"
-# conn.execute('''
-#     CREATE TABLE IF NOT EXISTS activity (
-#         id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         nom TEXT UNIQUE NOT NULL,
-#         type TEXT NOT NULL,
-#         description TEXT UNIQUE NOT NULL
-#     );
-# ''')
+#Création du modèle d'actité "Activity"
+conn.execute('''
+    CREATE TABLE IF NOT EXISTS activity (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nom TEXT UNIQUE NOT NULL,
+        type TEXT NOT NULL,
+        description TEXT UNIQUE NOT NULL
+    );
+''')
 
-# # Création de la table 'users'
-# conn.execute('''
-#     CREATE TABLE IF NOT EXISTS users (
-#         id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         firstname TEXT NOT NULL,
-#         lastname TEXT NOT NULL,
-#         email TEXT UNIQUE NOT NULL,
-#         password TEXT NOT NULL,
-#         identification_code TEXT NOT NULL,
-#         campus_location TEXT NOT NULL,
-#         Admin INTEGER 
-#     );
-# ''')
+# Création de la table 'users'
+conn.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        firstname TEXT NOT NULL,
+        lastname TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        identification_code TEXT NOT NULL,
+        campus_location TEXT NOT NULL,
+        Admin INTEGER 
+    );
+''')
 
-# # Création de la table 'identification_codes'
-# conn.execute('''
-#     CREATE TABLE IF NOT EXISTS identification_codes (
-#         id INTEGER PRIMARY KEY AUTOINCREMENT,
-#         code TEXT UNIQUE NOT NULL
-#     );
-# ''')
+# Création de la table 'identification_codes'
+conn.execute('''
+    CREATE TABLE IF NOT EXISTS identification_codes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        code TEXT UNIQUE NOT NULL
+    );
+''')
 
-# # Sauvegarde des modifications et fermeture de la connexion
-# conn.commit()
-# conn.close()
+# Sauvegarde des modifications et fermeture de la connexion
+conn.commit()
+conn.close()
 
 
 @app.route('/register', methods=['GET', 'POST'])

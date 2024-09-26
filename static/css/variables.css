@@ -1,6 +1,7 @@
 :root {
     --primary-color: #9191ff;
     --primary-100: #dfe0ff;
+    --primary-200: #C5C7FF;
     --primary-400: #877dfc;
     --primary-600: #6741ea;
     --primary-950: #26194D;
@@ -11,5 +12,8 @@
     --white-accent-color: #FBFBFF;
     --gray-light: #f2f4f8;
     --gray-medium: #c1c7cd;
+    --gray-dark: #7F7F7F;
+    --orange: #DE9151;
+    --red: #ED254E;
     --transition: 250ms;
 }
