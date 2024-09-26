@@ -153,6 +153,7 @@ def login():
                 'user_id': user['id'],
                 'firstname': user['firstname'], 
                 'lastname': user['lastname'],
+                'campus': user['campus_location'],
                 'is_admin': bool(user['Admin'])  # Convertir l'Admin en booléen
             }
             return redirect(url_for('dashboard'))  # Rediriger vers le tableau de bord
