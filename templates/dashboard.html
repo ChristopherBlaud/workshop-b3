@@ -35,7 +35,7 @@
                 <div role="button" class="activities__container__card card--adding"></div>            
                 <div class="form-wrapper">
                     <h2>Créer une activité</h2>
-                    <form action="" method="POST" class="form form--activity">
+                    <form action="/add_activity" method="POST" class="form form--activity">
                         <div class="form__wrapper">
                             <div class="form__input-container">
                                 <label for="title">Titre</label>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form__wrapper">
                             <div class="form__input-container">
-                                <label for="category">Description</label>
+                                <label for="description">Description</label>
                                 <div class="input">
                                     <textarea name="description" id="description" rows="4"></textarea>
                                 </div>
@@ -100,70 +100,15 @@
                        </div> 
                     </div>     
                     {% endif %}               
+                    {% for activity in activities %}
                     <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
+                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo de {{ activity.nom }}">
+                        <h4 class="activities__container__card__title">{{ activity.nom }}</h4>
                         <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
+                            <span class="activities__container__card__category__type {{ activity.type }}">{{ activity.type }}</span>
                         </div>
                     </article>
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>             
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>             
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>             
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>
-                    <article class="activities__container__card">
-                        <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo du plateau d'un jeu de rôle">
-                        <h4 class="activities__container__card__title">Jeux de rôle</h4>
-                        <div class="activities__container__card__category">
-                            <span class="activities__container__card__category__type physical">Présentiel</span>
-                            <span class="activities__container__card__category__type remote">À distance</span>
-                        </div>
-                    </article>                                                                                
+                    {% endfor %}                                                                           
                 </div>
             </section>
         </main>
