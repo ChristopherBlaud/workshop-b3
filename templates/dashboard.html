@@ -130,7 +130,7 @@
                     </div>     
                     {% endif %}               
                     {% for activity in activities %}
-                    <article class="activities__container__card" data-id="{{ activity.id }}">
+                    <article class="activities__container__card" data-id="{{ activity.id }}" data-id="{{ activity.id}}">
                         <img class="activities__container__card__image" src="../static/images/placeholder.jpg" alt="photo de {{ activity.nom }}">
                         <h4 class="activities__container__card__title">{{ activity.nom }}</h4>
                         <div class="activities__container__card__category">

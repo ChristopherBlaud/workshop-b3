@@ -194,6 +194,8 @@ def show_activity(activity_id):
         return jsonify({"error": "Activity not found"}), 404
 
 
+
+
 # Logique pour la déconnexion
 @app.route('/logout')
 def logout():
