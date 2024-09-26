@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tableau de Bord</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">        
     </head>
     <body>         
         <header class="header">
@@ -77,7 +81,7 @@
                                     </svg>                                
                                     <span>Ajouter une image</span>
                                 </button>
-                                <span class="file-button__image-name">ma-super-image.jpg</span>
+                                <span class="file-button__image-name"></span>
                             </div>
                             <div class="form__input-container">
                                 <button type="submit" name="submit-btn" id="submit-btn">Enregistrer mon activité</button>
@@ -86,11 +90,34 @@
                     </form>
                 </div>
             </div>
+            <div class="modal modal--join">
+                <div role="button" class="activities__container__card card--adding"></div>  
+                <div class="activity-informations">
+                    <div class="activity-informations__heading"> 
+                        <picture class="activity-informations__heading__image-container">
+                            <img src="../static/images/placeholder.jpg" alt="image placeholder">
+                        </picture>
+                        <div class="activity-informations__heading__text">
+                            <h2>Jeux de rôle</h2>
+                            <div class="activity-informations__heading__text__category">
+                                <span>Présentiel</span>
+                            </div>
+                            <span>314 membres</span>
+                        </div>
+                    </div>
+                    <div class="activity-informations__body">
+                        <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.Lorem ipsum odor amet, consectetuer adipiscing elit. Tellus ornare facilisis pretium augue ultricies sapien tempor in. Tempus ornare vulputate penatibus cubilia, purus proin amet.</p>
+                    </div>
+                    <div class="activity-informations__button-container">
+                        <button class="button button--join">Rejoindre l’activité</button>
+                        <button class="button button--edit">Modifier</button>
+                        <button class="button button--delete">Supprimer</button>
+                    </div>
+                </div>
+            </div>
             <section class="activities">
                 <h3>Activitiés</h3>
                 <div class="activities__container">
-
-
                     {% if user.is_admin %}
                     <div role="button" class="activities__container__card card--adding">
                        <div class="activities__container__card__icon-container">

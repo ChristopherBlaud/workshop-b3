@@ -1,4 +1,7 @@
 body {
+    --sb-track-color: #ffffff;
+    --sb-thumb-color: var(--primary-200);
+    --sb-size: 6px;    
     display: flex;
     flex-flow: row;
 }
@@ -19,7 +22,7 @@ body {
     overflow: hidden;
 }
 
-.modal.modal--activity {
+.modal {
     display: flex;
     position: absolute;
     z-index: 4;
@@ -35,7 +38,7 @@ body {
     transition: opacity var(--transition) ease-in-out;
 }
 
-.modal--activity .activities__container__card.card--adding {
+.modal .activities__container__card.card--adding {
     position: absolute;
     z-index: 5;
     top: 0;
@@ -50,23 +53,116 @@ body {
     z-index: 6;
 }
 
-.modal--activity.active {
+.modal.active {
     visibility: visible;
     opacity: 1;
     pointer-events: initial;
 }
 
-.modal.modal--activity::before {
+.modal::before {
     content: "";
     display: flex;
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: var(--primary-950);
     opacity: 0.6;
+}
+
+.modal--join .activity-informations {
+    display: flex;
+    z-index: 5;
+    flex-flow: column;
+    gap: 24px;
+    max-width: 645px;
+    padding: 32px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+}
+
+.modal--join .activity-informations__heading {
+    display: flex;
+    gap: 16px;
+}
+
+.modal--join .activity-informations__heading__image-container {
+    display: flex;
+    width: 89px;
+    height: 96px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal--join .activity-informations__heading__image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal--join .activity-informations__heading__text {
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+}
+
+.modal--join .activity-informations__heading__text__category span {
+    display: inline-flex;
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 1.1;
+    font-weight: 500;
+    color: var(--gray-dark);
+    background-color: var(--gray-light);
+    border-radius: 16px;
+}
+
+.modal--join .activity-informations__button-container {
+    display: flex;
+    gap: 24px;
+}
+
+.modal--join .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 12px;
+    flex: 1;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Nunito Sans', sans-serif;
+    line-height: 1;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: background-color var(--transition) ease-in-out;
+}
+
+.button.button--join {
+    background-color: var(--secondary-color);
+}
+
+.button.button--join:hover {
+    background-color: var(--secondary-600);
+}
+
+.button.button--edit {
+    background-color: var(--orange);
+}
+
+.button.button--edit:hover {
+    background-color: #c56d26;
+}
+
+.button.button--delete {
+    background-color: var(--red);
+}
+
+.button.button--delete:hover {
+    background-color: #b80f31;
 }
 
 .header__logo-container {
@@ -99,6 +195,16 @@ body {
     flex-flow: row;
     gap: 8px;
     padding-inline: 32px;
+}
+
+.header__user-informations__heading__image-container {
+    overflow: hidden;
+}
+
+.header__user-informations__heading__image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .header__user-informations__body {
@@ -195,12 +301,18 @@ section.activities {
 }
 
 .activities__container::-webkit-scrollbar {
-    display: none;
+    width: var(--sb-size);
 }
-
-.activities__container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  
+.activities__container::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 24px;
+}
+  
+.activities__container::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 24px;
+    border: 5px solid #fff;
 }
 
 .activities__container__card {
@@ -218,6 +330,10 @@ section.activities {
     border-radius: 8px;
     overflow: hidden;
     scroll-snap-align: start;
+}
+
+.activities__container__card:not(.card--adding) {
+    cursor: pointer;
 }
 
 .activities__container__card:not(.card--adding)::before {
@@ -363,7 +479,7 @@ section.activities {
         padding: 0;
     }
 
-    .modal.modal--activity {
+    .modal {
         padding: 16px;
     }
 
@@ -374,6 +490,11 @@ section.activities {
 
     .modal--activity .form-wrapper {
         width: 100%;
+    }
+
+    .modal--join .activity-informations__button-container {
+        flex-flow: column;
+        gap: 16px;
     }
 
     .form-wrapper h2 {
