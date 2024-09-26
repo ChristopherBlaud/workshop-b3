@@ -14,13 +14,27 @@
             title = container.querySelector(".activity-informations__heading__text h2"),
             category = container.querySelector(".activity-informations__heading__text__category"),
             description = container.querySelector(".activity-informations__body p");
+            
+            title.textContent = data.nom;
+
+            category.textContent = data.category;
+            category.classList.add(`${data.category}`);
+
+            description.textContent = data.description;
     };
 
     const getActivityInformations = async (activityID) => {
         try {
-            const data = await fetch(`http://127.0.0.1/dashboard/activity/${activityID}`);
+            const response = await fetch(`http://127.0.0.1:5000/dashboard/activity/${activityID}`);
 
-            data && showActivityInformations(data);
+            const result = await response.json();
+
+            if (response.ok) {
+                showActivityInformations(result);
+            } else {
+                console.error("Error", result)
+            }
+
         } catch (error) {
             console.error(error);
         };
@@ -58,7 +72,11 @@
     // Ouvre la modal des informations d'activité au clique
     activityCards && activityCards.forEach(activityCard => {
         activityCard.addEventListener("click", () => {
+            const activityID = activityCard.dataset.id;
+
+            activityID && getActivityInformations(activityID);
             activityJoinModal.classList.add("active");
+
         })
     });
 
