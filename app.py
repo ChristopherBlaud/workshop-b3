@@ -86,7 +86,7 @@ def join_activity():
         already_joined = cursor.fetchone()
 
         if already_joined:
-            return jsonify({"error": "You have already joined this activity"}), 400
+            return jsonify({"error": "You have already joined this activity"}), 4600
 
         # Insère l'enregistrement dans la table user_activity
         cursor.execute("INSERT INTO user_activity (user_id, activity_id) VALUES (?, ?)", (user_id, activity_id))
@@ -163,8 +163,6 @@ def login():
     return render_template('login.html')  # Affiche la page de login
 
 
-
-# Logique pour le dashboard 
 @app.route('/dashboard')
 def dashboard():
     # Vérification que l'utilisateur est connecté
@@ -173,21 +171,27 @@ def dashboard():
 
     # Connexion à la base de données
     conn = get_db_connection()
-    
-    # Récupération des activités depuis la base de données
-    activities = conn.execute('SELECT * FROM activity').fetchall()
-    print(activities)
 
-    # Récupération de l'utilisateur connecté
+    # Récupération des activités de l'utilisateur
+    user_id = session['user']['user_id']  # Assurez-vous que l'ID utilisateur est bien récupéré
+    user_activity = conn.execute('''
+        SELECT DISTINCT activity.nom 
+        FROM activity
+        JOIN user_activity ON activity.id = user_activity.activity_id
+        WHERE user_activity.user_id = ?
+    ''', (user_id,)).fetchall()
+
+    # Récupération des autres informations nécessaires
+    activity = conn.execute('SELECT * FROM activity').fetchall()
     user = session['user']
-    
-    # Vérification si l'utilisateur est admin
     is_admin = user['is_admin']
 
     conn.close()
 
-    # Envoie des informations de l'utilisateur et des activités au template
-    return render_template('dashboard.html', user=user, activities=activities, is_admin=is_admin)
+    # Envoie des informations au template
+    return render_template('dashboard.html', user=user, activities=activity, user_activity=user_activity, is_admin=is_admin)
+
+
 
 @app.route('/add_activity', methods=['POST'])
 def add_activity():

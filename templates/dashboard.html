@@ -37,11 +37,9 @@
                             <span class="header__user-informations__body__activities__title">
                                 <strong>Mes activités</strong>
                             </span>
-                            <ul class="header__user-informations__body__activities__list">
-                                <li class="header__user-informations__body__activities__list__item">Jeux de rôle</li>
-                                <li class="header__user-informations__body__activities__list__item">Escalade</li>
-                                <li class="header__user-informations__body__activities__list__item">Moto</li>
-                            </ul>
+                            {% for activity in user_activity %}
+                            <li class="header__user-informations__body__activities__list__item">{{ activity['nom'] }}</li>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
