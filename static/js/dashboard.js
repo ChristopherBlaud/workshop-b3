@@ -13,6 +13,7 @@
     userActivitiesList = document.querySelector(".header__user-informations__body"),
     userActivitiesListItems = document.querySelectorAll(".header__user-informations__body__activities__list__item"),
     postsSection = document.querySelector(".activitiy-content"),
+    campusName = document.querySelector(".header__user-informations__heading__campus span"),
     postsSectionTitle = postsSection.querySelector("h2");
 
     // Affiche les données dans la modal
@@ -32,6 +33,7 @@
             description.textContent = data.description;
     };
 
+    // Au clique sur le bouton "Rejoindre l'activité", enregistre l'activité correspondante dans la base de donnée et la lie à l'utilisateur
     const joinActivity = async (activityID) => {
         try {
             const response = await fetch("http://127.0.0.1:5000/dashboard/join", {
@@ -140,4 +142,7 @@
             postsSectionTitle.textContent = userActivitiesListItem.textContent;
         })
     });
+
+    // Met la 1ère lettre du campus en majuscule
+    campusName && (campusName.textContent = campusName.textContent.charAt(0).toUpperCase() + campusName.textContent.slice(1));
 })();
