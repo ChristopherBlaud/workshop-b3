@@ -1,9 +1,26 @@
 body {
     --sb-track-color: #ffffff;
     --sb-thumb-color: var(--primary-200);
-    --sb-size: 6px;    
+    --sb-size: 6px;
     display: flex;
     flex-flow: row;
+    align-items: stretch;
+    min-height: 100dvh;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+  
+body::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 24px;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 24px;
+    border: 2px solid var(--white-color);
 }
 
 .activities__container::-webkit-scrollbar {
@@ -26,7 +43,6 @@ body {
     display: flex;
     flex-flow: column;
     flex: 0 0 270px;
-    min-height: 100dvh;
     padding-top: 32px;
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -254,6 +270,21 @@ img {
     flex-flow: column;
     gap: 8px;    
     padding-left: 16px;
+}
+
+.header__user-informations__body__activities__list::-webkit-scrollbar {
+    width: 4px;
+}
+  
+.header__user-informations__body__activities__list::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 24px;
+}
+  
+.header__user-informations__body__activities__list::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 24px;
+    border: 5px solid var(--primary-color);
 }
 
 .header__user-informations__body__activities__list__item {
